@@ -1,0 +1,42 @@
+# Grouped Dependabot security fixes, version updates off (AB#9787).
+#
+# One block per ecosystem and directory that has open Dependabot alerts or security PRs, in the same
+# shape as the security blocks of dbt-mapping-veristat PR #162: no target-branch (a block with a
+# target-branch no longer applies to security updates, which always target the default branch),
+# open-pull-requests-limit: 0 so no version-update PRs are opened, and one group "security" that
+# applies to security updates, so a week's security fixes for a directory arrive as one PR.
+# Nothing here merges on its own.
+version: 2
+updates:
+  # root package-lock.json
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0
+    groups:
+      security:
+        applies-to: security-updates
+        patterns: ["*"]
+
+  # client/package-lock.json
+  - package-ecosystem: npm
+    directory: "/client"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0
+    groups:
+      security:
+        applies-to: security-updates
+        patterns: ["*"]
+
+  # mcp/package-lock.json
+  - package-ecosystem: npm
+    directory: "/mcp"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0
+    groups:
+      security:
+        applies-to: security-updates
+        patterns: ["*"]
